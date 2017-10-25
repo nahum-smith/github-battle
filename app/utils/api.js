@@ -1,9 +1,5 @@
 const axios = require('axios')
 
-const id = ""
-const sec = ""
-const params = ""
-
 function getProfile (username) {
   return axios.get(`https://api.github.com/users/${username}`)
   .then(({data}) => data)
