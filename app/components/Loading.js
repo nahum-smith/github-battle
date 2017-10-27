@@ -1,5 +1,5 @@
-const React = require('react')
-const PropTypes = require('prop-types')
+import React from 'react'
+import PropTypes from 'prop-types'
 
 var styles = {
   content: {
@@ -9,14 +9,21 @@ var styles = {
 }
 
 class Loading extends React.Component {
-  constructor (props) {
-    super(props)
-    this.originalText = props.text
-    this.state = {
-      text: this.originalText
-    }
+
+  static propTypes = {
+    text: PropTypes.string,
+    speed: PropTypes.number
   }
 
+  static defaultProps = {
+    text: 'Loading',
+    speed: 300
+  }
+
+  state = {
+    text: this.props.text
+  }
+  
   componentDidMount () {
     const { text, speed } = this.props
     const stopper = `${text}...`
@@ -42,14 +49,6 @@ class Loading extends React.Component {
   }
 }
 
-Loading.propTypes = {
-  text: PropTypes.string,
-  speed: PropTypes.number
-}
 
-Loading.defaultProps = {
-  text: 'Loading',
-  speed: 300
-}
 
-module.exports = Loading
+export default Loading
